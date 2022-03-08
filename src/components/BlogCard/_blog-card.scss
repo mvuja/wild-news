@@ -1,0 +1,35 @@
+.blog-card{
+    background: lightblue;
+    
+    img{
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+    }
+
+    .content{
+        padding: 2rem;
+
+        .title{
+            font-size: 2.2rem;
+            line-height: 1.3;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;  
+            overflow: hidden;
+        }
+        
+        .description{
+            font-size: 1.6rem;
+            line-height: 1.5;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;  
+            overflow: hidden;
+        }
+
+        .read-more{
+            font-size: 2rem;
+            margin-top: 2rem;
+        }
+    }
+}

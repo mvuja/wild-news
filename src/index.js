@@ -6,22 +6,22 @@ import reportWebVitals from './reportWebVitals';
 
 import { BrowserRouter } from "react-router-dom";
 
-import { configureStore } from '@reduxjs/toolkit'
-import { Provider } from 'react-redux';
-import userReducer from './features/Blog'
+// import { configureStore } from '@reduxjs/toolkit'
+// import { Provider } from 'react-redux';
+// import userReducer from './features/Blog'
 
-const store = configureStore({
-  reducer: {
-    user: userReducer,
-  },
-})
+// const store = configureStore({
+//   reducer: {
+//     user: userReducer,
+//   },
+// })
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Provider store={store}>
+      {/* <Provider store={store}> */}
         <App />
-      </Provider>
+      {/* </Provider> */}
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
