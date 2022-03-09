@@ -1,5 +1,7 @@
 import './_blog-card.scss'
 
+import {  Link } from "react-router-dom"
+
 
 const BlogCard = props => {
     return (
@@ -8,7 +10,7 @@ const BlogCard = props => {
         <div className="content">
           <p className="title">{props.title}</p>
           <p className="description">{props.description}</p>
-          <a href="#" className='read-more'>Read More</a>
+          <Link to={`article/${props.title.replace(/\s+/g, '-').replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '').toLowerCase()}`} className='read-more'>Read Full Article</Link>
         </div>
       </div>
     );

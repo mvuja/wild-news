@@ -10,12 +10,13 @@
         padding: 2rem;
 
         .title{
-            font-size: 2.2rem;
+            font-size: 2rem;
             line-height: 1.3;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;  
             overflow: hidden;
+            margin-bottom: 1rem;
         }
         
         .description{
