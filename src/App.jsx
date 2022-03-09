@@ -10,6 +10,8 @@ import { usePromiseTracker, trackPromise } from "react-promise-tracker";
 const App = () => {
 
   const [topHeadlines, setTopHeadlines] = useState(null)
+  const [everything, setEverything] = useState(null)
+  const [topic, setTopic] = useState('')
 
   useEffect(() => {
 
@@ -24,6 +26,23 @@ const App = () => {
     )
   }, [])
 
+  useEffect(() => {
+
+    const urlEverything = `https://newsapi.org/v2/everything?q=${topic}&apiKey=137049f91b254a0d8f4a3c95353c3935`;    
+
+    fetch(urlEverything).then((res) => {
+      return res.json()
+    }).then((data) => {
+      setEverything(data.articles)
+    })
+
+  }, [topic])
+
+
+  const setTopicHandler = topicGot => {
+    setTopic(topicGot)
+  }
+
   const { promiseInProgress } = usePromiseTracker()
 
   return (
@@ -31,7 +50,7 @@ const App = () => {
       <Navbar />
       <Switch>
         <Route exact path="/">
-          <Home topHeadlines={topHeadlines} />
+          <Home topHeadlines={topHeadlines} everything={everything} setTopicHandler={setTopicHandler} />
         </Route>
         {
             (promiseInProgress === true) ?

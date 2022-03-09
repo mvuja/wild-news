@@ -1,4 +1,12 @@
-.blog-card-container{
+.search-container{
+    margin: 5rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.blog-card-container,
+.everything{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 3rem;

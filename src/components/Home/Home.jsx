@@ -5,19 +5,55 @@ import { useState } from "react";
 
 const Navbar = props => {
   const [loadMore, setLoadMore] = useState(false)
+  const [search, setSearch] = useState('')
+  const [isSearched, setIsSearched] = useState(false)
+
 
   const firstTwelve = props.topHeadlines?.slice(0, `${loadMore ? 20 : 12}`)
 
+
+  const searchSubmit = e => {
+    e.preventDefault()
+    props.setTopicHandler(search)
+    setIsSearched(true)
+    setSearch('')
+  }
+  
+  const searchChangeHandler = e => {
+    setSearch(e.target.value)
+  }
+
   return (
     <div className="container">
-      <div className="blog-card-container">
-          {
-          firstTwelve?.map(el => (
-            <BlogCard key={uuidv4()} image={el.urlToImage} title={el.title} description={el.description} />
-            ))
-          }
+      <div className="search-container">
+        <form onSubmit={searchSubmit}>
+          <input onChange={searchChangeHandler} value={search} className="input" type="text" />
+          <button>SEARCH</button>
+        </form>  
       </div>
-      <button style={{display: loadMore ? 'none' : 'block'}} className="load-more-btn" onClick={() => setLoadMore(true)}>LOAD MORE</button>
+      {
+      isSearched ?
+      
+      <div className="everything">
+        {
+          props.everything?.map(el => (
+            <BlogCard key={uuidv4()} image={el.urlToImage} title={el.title} description={el.description} />
+          ))
+        }
+      </div>
+      :
+      <div className="top-headlines">
+        <div className="blog-card-container">
+            {
+            firstTwelve?.map(el => (
+              <BlogCard key={uuidv4()} image={el.urlToImage} title={el.title} description={el.description} />
+              ))
+            }
+        </div>
+        <button style={{display: loadMore ? 'none' : 'block'}} className="load-more-btn" onClick={() => setLoadMore(true)}>LOAD MORE</button>
+      </div>
+
+      }
     </div>
   );
 }
