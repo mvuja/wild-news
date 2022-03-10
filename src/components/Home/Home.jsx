@@ -3,10 +3,11 @@ import { v4 as uuidv4 } from 'uuid'
 import BlogCard from "../BlogCard/BlogCard";
 import { useState } from "react";
 
-const Navbar = props => {
+const Home = props => {
   const [loadMore, setLoadMore] = useState(false)
   const [search, setSearch] = useState('')
   const [isSearched, setIsSearched] = useState(false)
+  const [isSorting, setIsSorting] = useState(false)
 
 
   const firstTwelve = props.topHeadlines?.slice(0, `${loadMore ? 20 : 12}`)
@@ -16,6 +17,7 @@ const Navbar = props => {
     e.preventDefault()
     props.setTopicHandler(search)
     setIsSearched(true)
+    setIsSorting(true)
     setSearch('')
   }
   
@@ -32,8 +34,17 @@ const Navbar = props => {
         </form>  
       </div>
       {
-      isSearched ?
-      
+        isSorting &&
+        <div className="sort-container">
+        <button onClick={() => props.setSortHandler('publishedAt')}>publishedAt</button>
+        <button onClick={() => props.setSortHandler('popularity')}>popularity</button>
+        <button onClick={() => props.setSortHandler('relevancy')}>relevancy</button>
+      </div>
+      }
+
+
+      {
+      isSearched ?      
       <div className="everything">
         {
           props.everything?.map(el => (
@@ -58,4 +69,4 @@ const Navbar = props => {
   );
 }
 
-export default Navbar
+export default Home

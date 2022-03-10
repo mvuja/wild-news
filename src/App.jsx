@@ -12,11 +12,14 @@ const App = () => {
   const [topHeadlines, setTopHeadlines] = useState(null)
   const [everything, setEverything] = useState(null)
   const [topic, setTopic] = useState('')
+  const [sort, setSort] = useState('publishedAt')
 
-  useEffect(() => {
-
-    const url = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=137049f91b254a0d8f4a3c95353c3935';
+  const url = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=137049f91b254a0d8f4a3c95353c3935';
+  const urlEverything = `https://newsapi.org/v2/everything?q=${topic}&sortBy=${sort}&apiKey=137049f91b254a0d8f4a3c95353c3935`;
   
+  const firstTwentyEverything = everything && everything.slice(0, 20)
+
+  useEffect(() => {  
     trackPromise(
     fetch(url).then((res) => {
             return res.json()
@@ -27,20 +30,23 @@ const App = () => {
   }, [])
 
   useEffect(() => {
+    trackPromise(
+      fetch(urlEverything).then((res) => {
+        return res.json()
+      }).then((data) => {
+        setEverything(data.articles)
+      })
+    )
 
-    const urlEverything = `https://newsapi.org/v2/everything?q=${topic}&apiKey=137049f91b254a0d8f4a3c95353c3935`;    
-
-    fetch(urlEverything).then((res) => {
-      return res.json()
-    }).then((data) => {
-      setEverything(data.articles)
-    })
-
-  }, [topic])
+  }, [topic, sort])
 
 
   const setTopicHandler = topicGot => {
     setTopic(topicGot)
+  }
+
+  const setSortHandler = sortGot => {
+    setSort(sortGot)
   }
 
   const { promiseInProgress } = usePromiseTracker()
@@ -50,7 +56,7 @@ const App = () => {
       <Navbar />
       <Switch>
         <Route exact path="/">
-          <Home topHeadlines={topHeadlines} everything={everything} setTopicHandler={setTopicHandler} />
+          <Home topHeadlines={topHeadlines} everything={everything} setTopicHandler={setTopicHandler} setSortHandler={setSortHandler} />
         </Route>
         {
             (promiseInProgress === true) ?
@@ -59,11 +65,23 @@ const App = () => {
               </Route>
             :
             topHeadlines?.map((el, id) => (
-              <Route key={id} path={`/article/${el.title.replace(/\s+/g, '-').replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '').toLowerCase()}`}>
+              <Route key={id} path={`/article/${el.title?.replace(/\s+/g, '-').replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '').toLowerCase()}`}>
                 <Article el={el} />
               </Route>
             ))
-          }
+        }
+        {
+            (promiseInProgress === true) ?
+              <Route path='/article'>
+                <Article/>
+              </Route>
+            :
+            firstTwentyEverything?.map((el, id) => (
+              <Route key={id} path={`/article/${el.title?.replace(/\s+/g, '-').replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '').toLowerCase()}`}>
+                <Article el={el} />
+              </Route>
+            ))
+        }
       </Switch>
 
     </div>

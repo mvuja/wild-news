@@ -10,7 +10,7 @@ const BlogCard = props => {
         <div className="content">
           <p className="title">{props.title}</p>
           <p className="description">{props.description}</p>
-          <Link to={`article/${props.title.replace(/\s+/g, '-').replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '').toLowerCase()}`} className='read-more'>Read Full Article</Link>
+          <Link to={`article/${props.title?.replace(/\s+/g, '-').replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '').toLowerCase()}`} className='read-more'>Read Full Article</Link>
         </div>
       </div>
     );
