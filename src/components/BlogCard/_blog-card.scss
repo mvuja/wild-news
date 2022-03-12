@@ -1,5 +1,7 @@
 .blog-card{
-    background: lightblue;
+    background: var(--primary-color);
+    border-radius: 1rem;
+    overflow: hidden;
     
     img{
         aspect-ratio: 16 / 9;
@@ -8,16 +10,18 @@
     }
 
     .content{
-        padding: 2rem;
+        padding: 3rem 2.5rem;
 
         .title{
-            font-size: 2rem;
-            line-height: 1.3;
+            font-size: 1.9rem;
+            font-weight: 600;
+            line-height: 1.4;
             display: -webkit-box;
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;  
             overflow: hidden;
             margin-bottom: 1rem;
+            color: var(--txt-color-primary);
         }
         
         .description{
@@ -27,11 +31,28 @@
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;  
             overflow: hidden;
+            color: var(--txt-color-secondary);
         }
 
         .read-more{
-            font-size: 2rem;
+            font-size: 1.6rem;
             margin-top: 2rem;
+            color: var(--txt-color-primary);
+            display: flex;
+            align-items: center;
+
+            &:hover{
+
+                img{
+                    margin-left: 2rem;
+                }
+            }
+
+            img{
+                max-width: 2.5rem;
+                margin-left: 1.3rem;
+                transition: margin-left .3s ease;
+            }
         }
     }
 }

@@ -1,10 +1,16 @@
+import { Link } from "react-router-dom";
 import "./_navbar.scss";
+import logo from '../../assets/logo.svg'
 
 const Navbar = () => {
   return (
-    <div>
-        <h3>djesseses</h3>
-    </div>
+    <nav>
+      <div className="container">
+        <Link to="/">
+          <img src={logo} alt="Logo" />
+        </Link>
+      </div>
+    </nav>
   );
 }
 

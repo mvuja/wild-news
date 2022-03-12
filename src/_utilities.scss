@@ -1,3 +1,11 @@
+:root{
+  --bg-color: #0f121a;
+  --txt-color-primary: #fff;
+  --txt-color-secondary: #8d93a1;
+  --primary-color-opacity: #161a2486;
+  --primary-color: #161a24;
+}
+
 .container{
     padding: 0 3rem;
     max-width: 138rem;
@@ -5,12 +13,10 @@
 }
 
 h1{
-    font-family: 'Archivo Black', sans-serif;
     font-size: 4.6rem;
 }
 
 h2{
-    font-family: 'Archivo Black', sans-serif;
     font-size: 4.2rem;
 }
 

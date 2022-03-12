@@ -1,11 +1,6 @@
 @import 'mixin';
 @import 'utilities';
-@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Raleway:wght@400;600;700&display=swap');
-
-:root{
-  --primary-color: #0D1119;
-  --secondary-color: #040610;
-}
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Raleway:wght@400;600;700;800&display=swap');
 
 ::selection{
   background: #435CFE;
@@ -83,6 +78,7 @@ body {
   box-sizing: border-box;
   overflow-x: hidden;
   font-family: 'Raleway', sans-serif;
+  background: var(--bg-color);
 }
 
 body.no-scroll{
