@@ -5,7 +5,6 @@ import { useState } from "react";
 
 import hero1 from '../../assets/hero-1.png'
 import hero2 from '../../assets/hero-2.png'
-import searchIcon from '../../assets/search.svg'
 
 const Home = props => {
   const [loadMore, setLoadMore] = useState(false)
@@ -29,17 +28,37 @@ const Home = props => {
     setSearch(e.target.value)
   }
 
+  const filterHandler = e => {
+    if(e.target.className.includes('publishedAt')){
+      props.setSortHandler('publishedAt')
+    }else if(e.target.className.includes('popularity')){
+      props.setSortHandler('popularity')
+    }else if(e.target.className.includes('relevancy')){
+      props.setSortHandler('relevancy')
+    }
+
+    const btnFilter = document.querySelectorAll('.btn-filter')
+
+    btnFilter.forEach(el => {
+      el.classList.remove('active')
+
+      if(!e.target.className.includes('active')){
+        e.target.className += ' active'
+      }
+    })
+  }
+
   return (
     <main id="main">
       <div className="hero-bg">
         <div className="container">
-          <img className="hero-1" src={hero1} alt="" />
-          <img className="hero-2" src={hero2} alt="" />
+          <img className="hero-1" src={hero1} alt="Graphic" />
+          <img className="hero-2" src={hero2} alt="Graphic" />
           <h1>LATEST WILD NEWS</h1>
           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid qui facilis, voluptas odio animi cupiditate dicta corrupti recusandae repellendus doloremque, minima sequi inventore? Accusantium ullam.</p>
           <div className="search-container">
             <form onSubmit={searchSubmit}>
-              <input onChange={searchChangeHandler} value={search} className="input" type="text" />
+              <input onChange={searchChangeHandler} value={search} className="input" type="text" placeholder="Search" />
               <button>SEARCH</button>
             </form>  
           </div>
@@ -50,10 +69,10 @@ const Home = props => {
         {
           isSorting &&
           <div className="sort-container">
-          <button onClick={() => props.setSortHandler('publishedAt')}>publishedAt</button>
-          <button onClick={() => props.setSortHandler('popularity')}>popularity</button>
-          <button onClick={() => props.setSortHandler('relevancy')}>relevancy</button>
-        </div>
+            <button className="active publishedAt btn-filter" onClick={filterHandler}>Date</button>
+            <button className="popularity btn-filter" onClick={filterHandler}>Popularity</button>
+            <button className="relevancy btn-filter" onClick={filterHandler}>Relevancy</button>
+          </div>
         }
 
 

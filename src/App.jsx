@@ -4,6 +4,7 @@ import { Switch, Route, Link } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import Home from "./components/Home/Home";
 import Article from "./components/Article/Article";
+import Footer from "./components/Footer/Footer";
 
 import { usePromiseTracker, trackPromise } from "react-promise-tracker";
 
@@ -66,7 +67,7 @@ const App = () => {
             :
             topHeadlines?.map((el, id) => (
               <Route key={id} path={`/article/${el.title?.replace(/\s+/g, '-').replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '').toLowerCase()}`}>
-                <Article el={el} />
+                <Article el={el} topHeadlines={topHeadlines} />
               </Route>
             ))
         }
@@ -78,12 +79,12 @@ const App = () => {
             :
             firstTwentyEverything?.map((el, id) => (
               <Route key={id} path={`/article/${el.title?.replace(/\s+/g, '-').replace(/[&\/\\#, +()$~%.'":*?<>{}]/g, '').toLowerCase()}`}>
-                <Article el={el} />
+                <Article el={el} topHeadlines={topHeadlines} />
               </Route>
             ))
         }
       </Switch>
-
+      <Footer />
     </div>
   );
 }
