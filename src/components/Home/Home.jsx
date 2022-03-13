@@ -65,7 +65,7 @@ const Home = props => {
         </div>
       </div>
 
-      <div className="container">
+      <div className="container" data-testid="not-empty">
         {
           isSorting &&
           <div className="sort-container">

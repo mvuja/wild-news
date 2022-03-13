@@ -1,18 +1,70 @@
 #article{
+
+    .hero-graphic{
+        position: absolute;
+        right: -15rem;
+        top: -15rem;
+
+        @media only screen and (max-width: 1000px) {
+            display: none;
+        }
+    }
+
     .container{
         margin-top: 25rem;
         display: grid;
         grid-template-columns: 1fr 40%;
         gap: 5rem;
+        position: relative;
+        z-index: 1;
+
+        @media only screen and (max-width: 1000px) {
+            grid-template-columns: 1fr;
+            gap: 10rem;
+        }
 
         .container-main{
 
             img{
                 border-radius: 2rem;
+                width: 100%;
+                aspect-ratio: 16 / 9;
+                object-fit: cover;
+                margin-bottom: 3rem;
             }
 
             .news-title{
                 font-size: 3rem;
+                color: var(--txt-color-primary);
+                margin-bottom: 2rem;
+                line-height: 1.4;
+            }
+
+            .news-date{
+                font-size: 1.6rem;
+                color: var(--txt-color-secondary);
+                margin-bottom: 1rem;
+            }
+
+            .news-source{
+                font-size: 1.4rem;
+                color: var(--txt-color-secondary);
+                margin-top: 1.5rem;
+            }
+
+            .news-author{
+                font-size: 1.6rem;
+                color: var(--txt-color-secondary);
+            }
+
+            .news-desc{
+                font-size: 1.6rem;
+                color: var(--txt-color-primary);
+                margin: 1.8rem 0 1rem;
+            }
+
+            .news-content{
+                font-size: 1.6rem;
                 color: var(--txt-color-primary);
             }
         }
@@ -24,6 +76,11 @@
             background: var(--primary-color);
             padding: 4rem;
             border-radius: 2rem;
+            align-self: start;
+
+            @media only screen and (max-width: 500px) {
+                padding: 3rem 2rem;
+            }
 
             .recent-cont-title{
                 font-size: 3rem;
@@ -39,6 +96,11 @@
                     aspect-ratio: 16 / 9;
                     object-fit: cover;
                     border-radius: 1rem;
+                    transition: opacity .3s ease;
+
+                    &:hover{
+                        opacity: .6;
+                    }
                 }
 
                 .content{

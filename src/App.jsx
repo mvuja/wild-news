@@ -22,11 +22,11 @@ const App = () => {
 
   useEffect(() => {  
     trackPromise(
-    fetch(url).then((res) => {
-            return res.json()
-        }).then((data) => {
-          setTopHeadlines(data.articles)
-        })
+      fetch(url).then((res) => {
+          return res.json()
+      }).then((data) => {
+        setTopHeadlines(data.articles)
+      })
     )
   }, [])
 
@@ -53,7 +53,7 @@ const App = () => {
   const { promiseInProgress } = usePromiseTracker()
 
   return (
-    <div>
+    <div id="main-container" >
       <Navbar />
       <Switch>
         <Route exact path="/">
