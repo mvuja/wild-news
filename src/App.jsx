@@ -56,7 +56,7 @@ const App = () => {
     <div id="main-container" >
       <Navbar />
       <Switch>
-        <Route exact path="/">
+        <Route exact path="/wild-news">
           <Home topHeadlines={topHeadlines} everything={everything} setTopicHandler={setTopicHandler} setSortHandler={setSortHandler} />
         </Route>
         {

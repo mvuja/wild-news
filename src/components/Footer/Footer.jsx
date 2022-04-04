@@ -6,7 +6,7 @@ const Footer = () => {
   return (
     <footer>
       <div className="container logo">
-        <Link to="/">
+        <Link to="/wild-news">
           <img src={logo} alt="Logo" />
         </Link>
       </div>
