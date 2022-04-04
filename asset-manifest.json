@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/wild-news/static/css/main.a3618653.css",
+    "main.js": "/wild-news/static/js/main.27025174.js",
+    "static/media/hero-1.png": "/wild-news/static/media/hero-1.2d96e3bd4c1a5c660a8b.png",
+    "static/media/hero-2.png": "/wild-news/static/media/hero-2.6db665877e2d438f73d4.png",
+    "static/media/logo.svg": "/wild-news/static/media/logo.78c9666ad1c7ccb40449d140f41d7140.svg",
+    "index.html": "/wild-news/index.html",
+    "static/media/arrow.svg": "/wild-news/static/media/arrow.fdc9dc7df654b661d6a2ce15c3684668.svg",
+    "main.a3618653.css.map": "/wild-news/static/css/main.a3618653.css.map",
+    "main.27025174.js.map": "/wild-news/static/js/main.27025174.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a3618653.css",
+    "static/js/main.27025174.js"
+  ]
+}
